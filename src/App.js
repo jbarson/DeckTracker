@@ -1,30 +1,36 @@
 import React from 'react';
 import './App.css';
 import {
-  Nav,
-  NavItem,
-  PageHeader,
-  Navbar
+  PageHeader
 } from 'react-bootstrap';
+import {Link} from 'react-router';
 
 class App extends React.Component {
-  greeting = "hi there";
+  constructor(props) {
+    super(props);
+    this.state = {
+      user:null,
+      role:null,
+      accounts: ["Fred", "Joe", "Lisa"],
+      data: 123
+    }
+  }
+  handleSelect = () => {}
   render() {
     return (
       <div className="container">
         <PageHeader className="text-muted ">Deck Tracker</PageHeader>
-        <Navbar>
-          <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleSelect}>
-            <NavItem eventKey="1" >NavItem 1 content</NavItem>
-            <NavItem eventKey="2" >NavItem 2 content</NavItem>
-          </Nav>
-          <Nav pullRight bsStyle="tabs">
-            <NavItem eventKey="3">Login</NavItem>
-          </Nav>
-        </Navbar>
-        <div className="content">
-          {this.greeting}
-        </div>
+        <button className="btn pull-right" onClick={() => this.handleLogin()}>{this.state.user
+          ? 'Log Out'
+          : 'Log In'}
+        </button>
+        <nav className="nav nav-tabs"  onSelect={this.handleSelect}>
+          <li><Link to="/create">Create Game</Link></li>
+          <li><Link to="/run">Run Game</Link></li>
+          <li><Link to="/play">Play Game</Link></li>    
+        </nav>
+        {React.cloneElement(this.props.children, {data: this.state.data})}
+        
       </div>
     );
   }
