@@ -6,7 +6,8 @@ class Create extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      accounts: []
+      accounts: [],
+      accountsPending: true
     }
   }
   componentDidMount() {
@@ -16,11 +17,12 @@ class Create extends React.Component {
       asArray: true
     })
       .then(data => {
-        
-        this.setState((state, props) => { return { 
-          accounts: data.map(i => i.name)
-         }});
-        
+        this.setState((state, props) => {
+          return {
+            accounts: data.map(i => i.name),
+            accountsPending: false
+          }
+        });
       })
   }
 
@@ -28,7 +30,7 @@ class Create extends React.Component {
     return (
       <Grid>
         <Row className="show-grid">
-          <Col>
+          {this.state.accountsPending?<h2>Loading...</h2>:<Col>
             <h2>Available Players</h2>
             <ListGroup>
               {this
@@ -45,7 +47,7 @@ class Create extends React.Component {
             </ListGroup>
             <button className="btn">Create Game</button>
             <hr/>
-          </Col>
+          </Col>}
         </Row>
       </Grid>
     );

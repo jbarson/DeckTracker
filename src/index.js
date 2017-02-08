@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
-import App from './App';
+import App from './components/App';
 import Dash from './components/Dash';
 import Create from './components/Create';
 import Run from './components/Run';

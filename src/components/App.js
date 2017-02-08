@@ -13,7 +13,6 @@ class App extends React.Component {
       data: 123
     }
   }
-  handleSelect = () => {}
   render() {
     return (
       <div className="container">
@@ -27,7 +26,7 @@ class App extends React.Component {
           </button>
         </div>
 
-        <nav className="nav nav-tabs" onSelect={this.handleSelect}>
+        <nav className="nav nav-tabs">
           <li>
             <Link to="/create">Create Game</Link>
           </li>
