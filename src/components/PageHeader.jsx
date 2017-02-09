@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router';
 
 const PageHeader = (props) => {
+  const user = props.user
+  const buttonText = user?'Log Out':'Log In'
   return (
     <div className="page-header">
       <h1>
@@ -9,10 +11,8 @@ const PageHeader = (props) => {
       </h1>
       <button 
         className="btn" 
-        onClick={props.handleLogin}>
-        {props.user
-          ? 'Log Out'
-          : 'Log In'}
+        onClick={()=>props.handleLogin(user)}>
+        {buttonText}
       </button>
     </div>
   );
@@ -20,7 +20,3 @@ const PageHeader = (props) => {
 
 export default PageHeader;
 
-React.PropTypes={
-  handleLogin: React.PropTypes.func.isRequired,
-  user: React.PropTypes.object,
-}

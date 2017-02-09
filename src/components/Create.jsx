@@ -10,6 +10,7 @@ class Create extends React.Component {
       accountsPending: true
     }
   }
+  
   componentDidMount() {
     base
       .fetch('accounts', {
@@ -24,6 +25,13 @@ class Create extends React.Component {
           }
         });
       })
+      .catch(error =>
+        console.error(error)
+      )
+  }
+  createGame =() => {
+    console.log(this.state.accounts);
+    this.state.accounts.map()
   }
 
   render() {
@@ -39,13 +47,13 @@ class Create extends React.Component {
                 .map((item, index) => {
                   return (
                     <ListGroupItem key={index}>
-                      <input type="checkbox"/>
+                      <input type="checkbox" onChange={(e)=>console.log(item) }/>
                       <span>{item}</span>
                     </ListGroupItem>
                   )
                 })}
             </ListGroup>
-            <button className="btn">Create Game</button>
+            <button className="btn" onClick={()=>this.createGame()}>Create Game</button>
             <hr/>
           </Col>}
         </Row>
