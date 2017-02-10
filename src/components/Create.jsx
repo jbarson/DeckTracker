@@ -1,5 +1,4 @@
 import React from 'react';
-import {Grid, Row, Col, ListGroup, ListGroupItem} from 'react-bootstrap';
 import base from '../base';
 
 class Create extends React.Component {
@@ -36,28 +35,30 @@ class Create extends React.Component {
 
   render() {
     return (
-      <Grid>
-        <Row className="show-grid">
-          {this.state.accountsPending?<h2>Loading...</h2>:<Col>
-            <h2>Available Players</h2>
-            <ListGroup>
-              {this
-                .state
-                .accounts
-                .map((item, index) => {
-                  return (
-                    <ListGroupItem key={index}>
-                      <input type="checkbox" onChange={(e)=>console.log(item) }/>
-                      <span>{item}</span>
-                    </ListGroupItem>
-                  )
-                })}
-            </ListGroup>
-            <button className="btn" onClick={()=>this.createGame()}>Create Game</button>
-            <hr/>
-          </Col>}
-        </Row>
-      </Grid>
+      <div className="container">
+        <div className="show-div row">
+          {this.state.accountsPending
+              ?<h2>Loading...</h2>
+              :<div>
+                <h2>Available Players</h2>
+                <ul className="list-group">
+                  {this
+                    .state
+                    .accounts
+                    .map((item, index) => {
+                      return (
+                        <li key={index} className="list-group-item">
+                          <input type="checkbox" onChange={(e)=>console.log(item) }/>
+                          <span>{item}</span>
+                        </li>
+                      )
+                    })}
+                </ul>
+                <button className="btn" onClick={()=>this.createGame()}>Create Game</button>
+                <hr/>
+              </div>}
+        </div>
+      </div>
     );
   }
 }
