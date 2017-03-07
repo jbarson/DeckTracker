@@ -5,10 +5,7 @@ const Navbar = () => {
     return (
         <nav className="nav nav-tabs">
           <li>
-            <Link to="/create">Create Game</Link>
-          </li>
-          <li>
-            <Link to="/run">Run Game</Link>
+            <Link to="/admin">Admin Game</Link>
           </li>
           <li>
             <Link to="/play">Play Game</Link>
